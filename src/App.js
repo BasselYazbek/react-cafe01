@@ -1,25 +1,44 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { useState } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import { AuthProvider } from './Auth';
+import WelcomePage from './WelcomePage';
+import Menu from './Menu';
+import espressopic from './assets/images/espresso.jpg';
+import capuchinopic from './assets/images/Cappuccino_at_Sightglass_Coffee.jpg';
+import './Menu.css';
 
-function App() {
+
+const App = () => {
+  const menuItems = [
+    {
+      name: 'Espresso',
+      imageUrl: espressopic,
+      description: 'Espresso coffe'
+    },
+    {
+      name: 'Capuchino',
+      imageUrl: capuchinopic,      
+      description: 'Delicios Cappuchino'
+    },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav className='nav'>
+        <Link to="/" className='nav-item'>Welcome</Link>
+        <Link to="/menu-page" className='nav-item'>Menu Items</Link>
+      </nav>
+
+        <Routes>
+          <Route path="/" element={<WelcomePage />} />
+          <Route path="/menu-page" element={<Menu menuItems={menuItems}/>} />
+        </Routes>
+      
     </div>
   );
-}
+};
 
 export default App;
