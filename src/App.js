@@ -12,6 +12,7 @@ import './Menu.css';
 
 
 const App = () => {
+
   const menuItems = [
     {
       name: 'Espresso',
@@ -36,7 +37,6 @@ const App = () => {
           <Route path="/" element={<WelcomePage />} />
           <Route path="/menu-page" element={<Menu menuItems={menuItems}/>} />
         </Routes>
-      
     </div>
   );
 };
